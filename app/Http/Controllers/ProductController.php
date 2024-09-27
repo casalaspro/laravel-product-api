@@ -30,11 +30,39 @@ class ProductController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     */
+     *
+     *  @OA\Post(
+     *      path="/api/product",
+     *      tags= {"Product"},
+     *      summary="Insert new product",
+     *      @OA\Response(
+     *          response=200,
+     *          description="Success",
+     *      ),
+     *      @OA\RequestBody(
+     *          @OA\MediaType(
+     *              mediaType="multipart/form-data",
+     *              @OA\Schema(
+     *              required={"name", "price"},
+     *                  @OA\Property(property="name", type="string"),
+     *                  @OA\Property(property="description", type="string"),
+     *                  @OA\Property(property="image", type="string", format="binary"),
+     *                  @OA\Property(property="price", type="number", format="float"),
+     *                  @OA\Property(property="discount_percentage", type="number", format="float"),
+     *              )
+     *          )
+     *      )
+     *  )
+     *
+     **/
     public function store(Request $request)
     {
-        //
+        $product = new Product();
+
+        $product->fill($request->all());
+        $product->save();
+
+
     }
 
     /**
