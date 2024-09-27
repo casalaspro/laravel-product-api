@@ -12,7 +12,8 @@
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
-        "pacificdev/laravel_9_preset": "^1.1"
+        "pacificdev/laravel_9_preset": "^1.1",
+        "zircote/swagger-php": "^4.10"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

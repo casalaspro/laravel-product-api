@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Redirect;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +16,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('vendor/l5-swagger/index');
+    // i take my localhost from the file env and i add the route to Swagger documentation
+    return Redirect::to(env("MY_LOCALHOST")."/api/documentation");
 });
