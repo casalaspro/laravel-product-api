@@ -59,6 +59,15 @@
                                     "discount_percentage": {
                                         "type": "number",
                                         "format": "float"
+                                    },
+                                    "categories": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string",
+                                            "enum": [
+                                                "ENUM_PLACEHOLDER"
+                                            ]
+                                        }
                                     }
                                 },
                                 "type": "object"

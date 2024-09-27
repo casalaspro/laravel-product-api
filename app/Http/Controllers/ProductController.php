@@ -49,6 +49,9 @@ class ProductController extends Controller
      *                  @OA\Property(property="image", type="string", format="binary"),
      *                  @OA\Property(property="price", type="number", format="float"),
      *                  @OA\Property(property="discount_percentage", type="number", format="float"),
+     *                  @OA\Property(property="categories", type="array",
+     *                      @OA\Items( type="string", enum={"ENUM_PLACEHOLDER"} )
+     *                  )
      *              )
      *          )
      *      )
