@@ -18,6 +18,7 @@ return new class extends Migration
             $table->char('image', 255)->default('default.jpg');
             $table->decimal('price', 10, 2);
             $table->decimal('discount_percentage', 5, 2)->default(0.00);
+            $table->timestamps();
         });
     }
 
