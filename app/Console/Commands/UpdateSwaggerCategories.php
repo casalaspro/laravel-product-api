@@ -31,6 +31,7 @@ class UpdateSwaggerCategories extends Command
      */
     public function handle()
     {
+        exec('php artisan l5-swagger:generate');
         // i take all the categpries from the db
         $categories = Category::pluck('name')->toArray();
 
@@ -59,7 +60,7 @@ class UpdateSwaggerCategories extends Command
         // $this->info('I update the Swagger documentation...');
         $this->info($readAgain);
 
-        exec('php artisan l5-swagger:generate');
+        
 
         $this->info('Swagger documentation successfully updated!');
     }

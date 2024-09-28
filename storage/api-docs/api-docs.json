@@ -54,18 +54,18 @@
                                     },
                                     "price": {
                                         "type": "number",
-                                        "format": "float"
+                                        "format": "double"
                                     },
                                     "discount_percentage": {
                                         "type": "number",
-                                        "format": "float"
+                                        "format": "double"
                                     },
                                     "categories": {
                                         "type": "array",
                                         "items": {
                                             "type": "string",
                                             "enum": [
-                                                "ENUM_PLACEHOLDER"
+                                                "technology", "videogames", "photograph", "furniture", "jewels", "edibles", "arts", "clothing", "medicines", "gadgets"
                                             ]
                                         }
                                     }
@@ -75,6 +75,31 @@
                         }
                     }
                 },
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        },
+        "/api/product/{id}": {
+            "get": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Show single product",
+                "operationId": "2768d88590e39a7ded1d0032e64dded7",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the product",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Success"

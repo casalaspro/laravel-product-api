@@ -3,6 +3,10 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Http\Exceptions\HttpResponseException;
+
+
 
 class StoreProductRequest extends FormRequest
 {
@@ -24,9 +28,20 @@ class StoreProductRequest extends FormRequest
         return [
             'name' => 'required|min:5|max:255',
             'description' => 'nullable',
-            'image' => 'image|max:10240', // max 10mb
-            'price' => 'required|numeric|decimal:2',
-            'discount_percentage' => 'nullable|numeric|decimal:2',
+            'image' => 'image|max:10240|nullable', // max 10mb
+            'price' => 'required|numeric|between:0,99999999.99',
+            'discount_percentage' => 'nullable|numeric|between:0,999,99',
+            'categories' => ''
         ];
+    }
+    
+    // Sovrascrivi il metodo failedValidation per restituire una risposta JSON
+    protected function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(response()->json([
+            'status' => 'error',
+            'message' => 'Validation failed',
+            'errors' => $validator->errors(),
+        ], 422));
     }
 }
