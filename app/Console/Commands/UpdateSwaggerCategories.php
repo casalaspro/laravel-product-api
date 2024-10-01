@@ -44,10 +44,6 @@ class UpdateSwaggerCategories extends Command
         // i read the configuration file
         $fileContents = file_get_contents($swaggerFilePath);
 
-        // $test_string = "La mia stringa è molto ENUM_PLACEHOLDER";
-        // $value = "bella";
-        // $new_string = str_replace("ENUM_PLACEHOLDER", '"' . $value . '"', $test_string);
-
         // i replace ENUM_PLACEHOLDER with the categories list
         $fileContentModified = str_replace('"ENUM_PLACEHOLDER"', '"default",' . '"' . $enumString . '"', $fileContents);
 
@@ -56,12 +52,10 @@ class UpdateSwaggerCategories extends Command
 
         $readAgain = file_get_contents($swaggerFilePath);
 
+        // if you want to check, uncomment this line
+        // $this->info($readAgain);
+
         // i update the documentation
-        // $this->info('I update the Swagger documentation...');
-        $this->info($readAgain);
-
-        
-
         $this->info('Swagger documentation successfully updated!');
     }
 }
