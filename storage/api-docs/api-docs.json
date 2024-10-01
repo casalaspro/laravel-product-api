@@ -65,7 +65,7 @@
                                         "items": {
                                             "type": "string",
                                             "enum": [
-                                                "technology", "videogames", "photograph", "furniture", "jewels", "edibles", "arts", "clothing", "medicines", "gadgets"
+                                                "default","technology", "videogames", "photograph", "furniture", "jewels", "edibles", "arts", "clothing", "medicines", "gadgets"
                                             ]
                                         }
                                     }
@@ -100,6 +100,80 @@
                         }
                     }
                 ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Update single product",
+                "description": "Each fild will have a default value. If you don't change that value, we recognize that don't want to make any modify.",
+                "operationId": "ec9176d0ba73362b0d0451d9d952f730",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the product",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "description": "It has to have 5 chars minimum",
+                                        "type": "string",
+                                        "default": "default",
+                                        "nullable": true
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "default": "default",
+                                        "nullable": true
+                                    },
+                                    "image": {
+                                        "type": "string",
+                                        "format": "binary",
+                                        "default": "default",
+                                        "nullable": true
+                                    },
+                                    "price": {
+                                        "type": "number",
+                                        "format": "double",
+                                        "default": "99999999.99",
+                                        "nullable": true
+                                    },
+                                    "discount_percentage": {
+                                        "type": "number",
+                                        "format": "double",
+                                        "default": "999.99",
+                                        "nullable": true
+                                    },
+                                    "categories": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string",
+                                            "default": "default",
+                                            "enum": [
+                                                "default","technology", "videogames", "photograph", "furniture", "jewels", "edibles", "arts", "clothing", "medicines", "gadgets"
+                                            ]
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
                         "description": "Success"

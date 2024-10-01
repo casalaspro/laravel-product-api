@@ -20,6 +20,8 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-Route::apiResource('product', ProductController::class);
+// Route::apiResource('product', ProductController::class);
+Route::apiResource('product', ProductController::class)->except(['update']);
+Route::post('product/{product}', [ProductController::class, 'update'])->name('product.update');
 
 Route::apiResource('category', CategoryController::class);

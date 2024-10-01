@@ -49,7 +49,7 @@ class UpdateSwaggerCategories extends Command
         // $new_string = str_replace("ENUM_PLACEHOLDER", '"' . $value . '"', $test_string);
 
         // i replace ENUM_PLACEHOLDER with the categories list
-        $fileContentModified = str_replace('"ENUM_PLACEHOLDER"', '"' . $enumString . '"', $fileContents);
+        $fileContentModified = str_replace('"ENUM_PLACEHOLDER"', '"default",' . '"' . $enumString . '"', $fileContents);
 
         // i overwrite the file with the new categories
         $result = file_put_contents($swaggerFilePath, $fileContentModified);
